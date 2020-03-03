@@ -7,7 +7,7 @@ var startQuiz = document.getElementById('startQuiz');
 
 window.onload = function() 
 {
-  $("#lap").on("click", stopwatch.recordLap);
+  $("#countdown").on("click", stopwatch.countdown);
   $("#stop").on("click", stopwatch.stop);
   $("#reset").on("click", stopwatch.reset);
   $("#start").on("click", stopwatch.start);
@@ -20,15 +20,15 @@ var clockRunning = false;
 var stopwatch = 
 {
 
-  time: 0,
+  time: 60,
   lap: 1,
 
   reset: function() 
   {
-    stopwatch.time = 0;
+    stopwatch.time = 60;
     stopwatch.lap = 1;
 
-    $("#display").text("00:00");
+    $("#timer").text("01:00");
 
     $("#laps").text("");
   },
@@ -47,23 +47,26 @@ var stopwatch =
     clearInterval(intervalId);
     clockRunning = false;
   },
-  recordLap: function() 
+  countdown: function() 
   {
 
-    var converted = stopwatch.timeConverter(stopwatch.time);
-
-    $("#laps").append("<p>Lap " + stopwatch.lap + " : " + converted + "</p>");
-
-    stopwatch.lap++;
-  },
-  count: function() 
-  {
-    stopwatch.time++;
+    //stopwatch.time++;
+    //stopwatch.time = stopwatch.time -10;
+    stopwatch.time-=10;
 
     var converted = stopwatch.timeConverter(stopwatch.time);
     console.log(converted);
 
-    $("#display").text(converted);
+    $("#timer").text(converted);
+  },
+  count: function() 
+  {
+    stopwatch.time--;
+
+    var converted = stopwatch.timeConverter(stopwatch.time);
+    console.log(converted);
+
+    $("#timer").text(converted);
   },
   timeConverter: function(t) 
   {
@@ -86,26 +89,10 @@ var stopwatch =
   }
 };
 
-function mult(x,y){
-  return x*y;
-}
 
-var results=mult(2,4);
 
-function displayArr(userArr){
-  for(var i=0;i<userArr.length;i++){
-    console.log(userArr[i]);
-  }
-}
 
-var NumArr= [1,2,3,4];
-
-displayArr(NumArr);
-var StrArr= ['a','b'];
-
-displayArr(StrArr);
-
-window.setTimeout(function, milliseconds);
+//window.setTimeout(function, milliseconds);
 
 var questions = [
   {
@@ -144,6 +131,6 @@ function showChoices(){
 function showAnswer(){
   questionAnswer.innerHTML = questions[2].answer
 }
-startQuiz.onclick = function(){
-window.setTimeout(function, milliseconds);
-}
+// startQuiz.onclick = function(){
+// window.setTimeout(function, milliseconds);
+// }

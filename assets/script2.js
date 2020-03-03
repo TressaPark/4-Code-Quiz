@@ -11,7 +11,25 @@ window.onload = function()
   $("#stop").on("click", stopwatch.stop);
   $("#reset").on("click", stopwatch.reset);
   $("#start").on("click", stopwatch.start);
+  $("#answers").on("click", answerClicked)
 };
+
+function answerClicked(e) {
+  if(e.target.matches('a')) {
+    e.stopPropagation()
+    console.log(e.currentTarget)
+    if(e.target.getAttribute('data-correct') != "true") {
+      stopwatch.time -= 5
+    }
+    currentQuestion++
+    if(currentQuestion >= questions.length) {
+      alert('Quiz Complete')
+    }
+    else {
+      render()
+    }
+  }
+}
 
 var intervalId;
 
@@ -39,6 +57,7 @@ var stopwatch =
     if (!clockRunning) {
         intervalId = setInterval(stopwatch.count, 1000);
         clockRunning = true;
+        render()
     }
   },
   stop: function() 
@@ -93,7 +112,23 @@ var stopwatch =
 
 
 //window.setTimeout(function, milliseconds);
+var currentQuestion = 0
+function render () {
+  var question = document.getElementById('question')
+  var answers = document.getElementById('answers')
+  var questionObj = questions[currentQuestion]
 
+  answers.innerHTML = ''
+  question.innerHTML = questionObj.title
+  for(var i = 0; i < questionObj.choices.length; i++) {
+    if(questionObj.choices[i] == questionObj.answer) {
+      answers.innerHTML += '<a class="btn btn-primary btn-sm" data-correct="true" href="#" role="button">' + questionObj.choices[i] + '</a>'
+    }
+    else {
+      answers.innerHTML += '<a class="btn btn-primary btn-sm" href="#" role="button">' + questionObj.choices[i] + '</a>'
+    }
+  }
+}
 var questions = [
   {
       title: "What does HTML stand for?",
@@ -122,15 +157,6 @@ var questions = [
   },
 ]
 
-function showQuestion(){
-  questionTitle.innerHTML = questions[0].title
-}
-function showChoices(){
-  questionChoices.innerHTML = questions[1].choices
-}
-function showAnswer(){
-  questionAnswer.innerHTML = questions[2].answer
-}
 // startQuiz.onclick = function(){
 // window.setTimeout(function, milliseconds);
 // }

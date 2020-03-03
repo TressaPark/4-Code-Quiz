@@ -122,10 +122,10 @@ function render () {
   question.innerHTML = questionObj.title
   for(var i = 0; i < questionObj.choices.length; i++) {
     if(questionObj.choices[i] == questionObj.answer) {
-      answers.innerHTML += '<a class="btn btn-primary btn-sm" data-correct="true" href="#" role="button">' + questionObj.choices[i] + '</a>'
+      answers.innerHTML += '<a class="btn btn-primary btn-md" data-correct="true" href="#" role="button">' + questionObj.choices[i] + '</a>'
     }
     else {
-      answers.innerHTML += '<a class="btn btn-primary btn-sm" href="#" role="button">' + questionObj.choices[i] + '</a>'
+      answers.innerHTML += '<a class="btn btn-primary btn-md" href="#" role="button">' + questionObj.choices[i] + '</a>'
     }
   }
 }

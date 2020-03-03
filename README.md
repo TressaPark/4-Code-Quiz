@@ -6,12 +6,12 @@ Rules are:
 
 (yes) GIVEN I am taking a code quiz
 (yes) WHEN I click the start button
-(yes) THEN a timer starts and I am presented with a question
-(n/a) WHEN I answer a question
-(no) THEN I am presented with another question
-(no) WHEN I answer a question incorrectly
-(no) THEN time is subtracted from the clock
-(no) WHEN all questions are answered or the timer reaches 0
-(n/a) THEN the game is over
-(n/a) WHEN the game is over
+(yes) THEN a one minute timer starts and I am presented with a question
+(yes) WHEN I answer a question
+(yes) THEN I am presented with another question
+(yes) WHEN I answer a question incorrectly
+(yes) THEN 5 seconds is subtracted from the clock
+(yes) WHEN all questions are answered or the timer reaches 0
+(yes) THEN the game is over
+(yes) WHEN the game is over
 (no) THEN I can save my initials and score

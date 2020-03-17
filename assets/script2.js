@@ -22,8 +22,21 @@ function answerClicked(e) {
       stopwatch.time -= 5
     }
     currentQuestion++
+    //if game is over
     if(currentQuestion >= questions.length) {
-      alert('Quiz Complete')
+      //tell user game is over
+      alert('Quiz Complete');
+      //stop the time
+      stopwatch.stop();
+      //hide the q's and ans
+      $("#question").hide();
+      $("#answers").hide();
+      //once game is done, display user's score
+
+      //then ask user to add their name and score and set that to local storage
+  
+      //as soon as the submit, display all scores with names
+
     }
     else {
       render()
@@ -87,23 +100,24 @@ var stopwatch =
 
     $("#timer").text(converted);
   },
+  //timeConverter fx this converts the current time to mins and sections with clock format
   timeConverter: function(t) 
   {
-
     var minutes = Math.floor(t / 60);
     var seconds = t - (minutes * 60);
-
+    //formats if time <10 s
     if (seconds < 10) {
       seconds = "0" + seconds;
     }
-
+    //formats when time is 0
     if (minutes === 0) {
       minutes = "00";
     }
+    //formats if min 10
     else if (minutes < 10) {
       minutes = "0" + minutes;
     }
-
+    //return time with mm:ss
     return minutes + ":" + seconds;
   }
 };

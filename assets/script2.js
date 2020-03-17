@@ -17,7 +17,7 @@ window.onload = function()
 function answerClicked(e) {
   if(e.target.matches('a')) {
     e.stopPropagation()
-    console.log(e.currentTarget)
+    //console.log(e.currentTarget)
     if(e.target.getAttribute('data-correct') != "true") {
       stopwatch.time -= 5
     }
@@ -32,7 +32,7 @@ function answerClicked(e) {
       $("#question").hide();
       $("#answers").hide();
       //once game is done, display user's score
-
+      $("#score").text("SCORE: complete!");
       //then ask user to add their name and score and set that to local storage
   
       //as soon as the submit, display all scores with names
@@ -66,6 +66,9 @@ var stopwatch =
 
   start: function() 
   {
+    //when the start btn clicked, hide the start btn and instructions
+    $("#start").hide();
+    $(".lead").hide()
 
     if (!clockRunning) {
         intervalId = setInterval(stopwatch.count, 1000);
@@ -89,16 +92,35 @@ var stopwatch =
     var converted = stopwatch.timeConverter(stopwatch.time);
     console.log(converted);
 
-    $("#timer").text(converted);
+    $("#timer").text("TIME: "+converted);
   },
   count: function() 
   {
+    //if time is zero
+    if(stopwatch.time<=0){
+     //tell user game is over
+     alert('Quiz Complete');
+     //stop the time
+     stopwatch.stop();
+     //hide time
+     $("#timer").hide();
+     //hide the q's and ans
+     $("#question").hide();
+     $("#answers").hide();
+     //once game is done, display user's score
+     $("#score").text("SCORE: complete!");
+     //then ask user to add their name and score and set that to local storage
+ 
+     //as soon as the submit, display all scores with names
+
+
+    }
     stopwatch.time--;
 
     var converted = stopwatch.timeConverter(stopwatch.time);
-    console.log(converted);
+    //console.log(converted);
 
-    $("#timer").text(converted);
+    $("#timer").text("TIMER: "+converted);
   },
   //timeConverter fx this converts the current time to mins and sections with clock format
   timeConverter: function(t) 
@@ -108,6 +130,8 @@ var stopwatch =
     //formats if time <10 s
     if (seconds < 10) {
       seconds = "0" + seconds;
+      //game is over
+      //hide everything
     }
     //formats when time is 0
     if (minutes === 0) {
@@ -135,7 +159,9 @@ function render () {
   answers.innerHTML = ''
   question.innerHTML = questionObj.title
   for(var i = 0; i < questionObj.choices.length; i++) {
+    //if choice == answer
     if(questionObj.choices[i] == questionObj.answer) {
+      //add correct attribure
       answers.innerHTML += '<a class="btn btn-primary btn-md" data-correct="true" href="#" role="button">' + questionObj.choices[i] + '</a>'
     }
     else {

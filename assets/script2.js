@@ -32,7 +32,7 @@ function answerClicked(e) {
       $("#question").hide();
       $("#answers").hide();
       //once game is done, display user's score
-      $("#score").text("SCORE: complete!");
+      $("#score").text("SCORE: Complete!");
       //then ask user to add their name and score and set that to local storage
   
       //as soon as the submit, display all scores with names

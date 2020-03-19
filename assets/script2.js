@@ -7,9 +7,9 @@ var startQuiz = document.getElementById('startQuiz');
 
 window.onload = function() 
 {
-  $("#countdown").on("click", stopwatch.countdown);
-  $("#stop").on("click", stopwatch.stop);
-  $("#reset").on("click", stopwatch.reset);
+  // $("#countdown").on("click", stopwatch.countdown);
+  // $("#stop").on("click", stopwatch.stop);
+  // $("#reset").on("click", stopwatch.reset);
   $("#start").on("click", stopwatch.start);
   $("#answers").on("click", answerClicked)
 };

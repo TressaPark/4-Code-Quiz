@@ -1,4 +1,4 @@
-# 04 Web APIs: Code Quiz – Tressa Park
+# 4 Code Quiz
 
 I built a timed code quiz with multiple-choice questions. The app will run in the browser and features dynamically updated HTML and CSS powered by JavaScript code. It will also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
 

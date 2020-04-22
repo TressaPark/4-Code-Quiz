@@ -14,4 +14,4 @@ Rules are:
 (yes) WHEN all questions are answered or the timer reaches 0
 (yes) THEN the game is over
 (yes) WHEN the game is over
-(no) THEN I can save my initials and score
+(no) THEN I can save my score

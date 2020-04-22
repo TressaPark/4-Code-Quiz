@@ -18,6 +18,7 @@ function answerClicked(e) {
   if(e.target.matches('a')) {
     e.stopPropagation()
     //console.log(e.currentTarget)
+    
     if(e.target.getAttribute('data-correct') != "true") {
       stopwatch.time -= 5
     }
@@ -145,9 +146,6 @@ var stopwatch =
     return minutes + ":" + seconds;
   }
 };
-
-
-
 
 //window.setTimeout(function, milliseconds);
 var currentQuestion = 0
